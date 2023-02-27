@@ -1,6 +1,7 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 
 import Form from './Form'
+import FormTest from "./FormTest";
 
 const LoginPage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -34,7 +35,9 @@ const LoginPage = () => {
         >
             Welcome to Socipedia, the Social Media for Socipedia
         </Typography>
+        
         <Form />
+
       </Box>
     </Box>
   );
