@@ -20,18 +20,18 @@ import FlexBetween from "components/FlexBetween";
 
 // create Schema
 const registerSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("Invalid email").required("required"),
-  password: yup.string().required("required"),
-  location: yup.string().required("required"),
-  occupation: yup.string().required("required"),
-  picture: yup.string().required("required"),
+  firstName: yup.string().required("Required"),
+  lastName: yup.string().required("Required"),
+  email: yup.string().email("Invalid email").required("Required"),
+  password: yup.string().required("Required"),
+  location: yup.string().required("Required"),
+  occupation: yup.string().required("Required"),
+  picture: yup.string().required("Required"),
 });
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("required"),
-  password: yup.string().required("required"),
+  email: yup.string().email("Invalid email").required("Required"),
+  password: yup.string().required("Required"),
 });
 
 const initialValuesRegister = {
@@ -45,7 +45,7 @@ const initialValuesRegister = {
 };
 
 const initialValuesLogin = {
-  firstName: "",
+  email: "",
   password: "",
 };
 
@@ -70,7 +70,10 @@ const Form = () => {
         "http://localhost:3001/auth/register",
         {
            method: "POST",
-           body: formData 
+           body: formData,
+           headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
     );
     const savedUser = await savedUserResponse.json()
@@ -107,7 +110,7 @@ const Form = () => {
   const handleFormSubmit = async (values, onSubmitProps) => {
     if(isLogin) await login(values, onSubmitProps);
     if(isRegister) await register(values, onSubmitProps);
-  };
+  }
 
   return (
     <Formik
@@ -147,7 +150,7 @@ const Form = () => {
                   }
                   helperText={touched.firstName && errors.firstName}
                   sx={{
-                    gridColumn: "span 4",
+                    gridColumn: "span 2",
                   }}
                 />
                 <TextField
@@ -159,7 +162,7 @@ const Form = () => {
                   error={Boolean(touched.lastName) && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
                   sx={{
-                    gridColumn: "span 4",
+                    gridColumn: "span 2",
                   }}
                 />
                 <TextField
@@ -189,7 +192,7 @@ const Form = () => {
                   }}
                 />
                 <Box
-                  gridColumn="sapn 2"
+                  gridColumn="span 4"
                   border={`1px solid ${palette.neutral.medium}`}
                   borderRadius="5px"
                   p="1rem"
@@ -197,8 +200,10 @@ const Form = () => {
                   <Dropzone
                     acceptFiles=".jpg, .jpeg, .png"
                     multiple={false}
-                    onDrop={(acceptedFiles) =>
-                      setFieldValue("picture", acceptedFiles(0))
+                    onDrop={(acceptedFiles) =>{
+                      console.log(acceptedFiles)
+                      setFieldValue("picture", acceptedFiles[0])
+                    }
                     }
                   >
                     {({ getRootProps, getInputProps }) => (
@@ -274,7 +279,7 @@ const Form = () => {
               sx={{
                 textDecoration: "underline",
                 color: palette.primary.main,
-                "&:hover": { color: palette.primary.light },
+                "&:hover": { color: palette.primary.light, cursor: 'pointer' },
               }}
             >
               {isLogin
