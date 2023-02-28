@@ -62,18 +62,20 @@ const Form = () => {
 
   const register = async (values, onSubmitProps)=> {
     const formData = new FormData()
-    for (let value in values){
-        formData.append(value, values[value])
-    }
+    // var obj = {}
+    // for (let value in values){
+    //   console.log(`${value}: ${values[value]}`)
+    //     obj = {
+    //       value: values[value]
+    //     }
+    // }
     formData.append("picturePath", values.picture.name);
     const savedUserResponse = await fetch(
         "http://localhost:3001/auth/register",
         {
            method: "POST",
-           body: formData,
-           headers: {
-            "Content-Type": "multipart/form-data",
-          },
+           headers: {"Content-Type": "application/json"},
+           body: JSON.stringify(values),
         }
     );
     const savedUser = await savedUserResponse.json()
