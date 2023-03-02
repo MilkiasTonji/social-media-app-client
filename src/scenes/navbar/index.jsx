@@ -41,7 +41,11 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = `${user?.firstName} ${user?.lastName}`;
+  const formattedLastName = user?.lastName.slice(0, 4);
+
+  const fullName = `${user?.firstName} ${formattedLastName}`;
+
+
   // const fullName = "Milkias Tonji"; 
 
   return (
