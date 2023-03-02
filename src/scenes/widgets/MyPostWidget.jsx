@@ -1,6 +1,15 @@
-import { DeleteOutlined, EditOutlined, ImageOutlined } from "@mui/icons-material";
+import {
+  AttachFileOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  GifBoxOutlined,
+  ImageOutlined,
+  MicOutlined,
+  MoreHorizOutlined,
+} from "@mui/icons-material";
 import {
   Box,
+  Button,
   Divider,
   IconButton,
   InputBase,
@@ -112,12 +121,51 @@ const MyPostWidget = ({ picturePath }) => {
           </Dropzone>
         </Box>
       )}
-      <Divider sx={{margin: "1.25rem 0"}} />
+      <Divider sx={{ margin: "1.25rem 0" }} />
       <FlexBetween>
         <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
-            <ImageOutlined sx={{color: mediumMain, "&:hover": {cursor: 'pointer'}}} />
-
+          <ImageOutlined
+            sx={{ color: mediumMain, "&:hover": { cursor: "pointer" } }}
+          />
+          <Typography
+            color={mediumMain}
+            sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+          >
+            Image
+          </Typography>
         </FlexBetween>
+        {isNonMobileScreens ? (
+          <>
+            <FlexBetween gap="0.25rem">
+              <GifBoxOutlined sx={{ color: mediumMain }} />
+              <Typography color={mediumMain}>Clip</Typography>
+            </FlexBetween>
+            <FlexBetween gap="0.25rem">
+              <AttachFileOutlined sx={{ color: mediumMain }} />
+              <Typography color={mediumMain}>Attachment</Typography>
+            </FlexBetween>
+            <FlexBetween gap="0.25rem">
+              <MicOutlined sx={{ color: mediumMain }} />
+              <Typography color={mediumMain}>Audio</Typography>
+            </FlexBetween>
+          </>
+        ) : (
+          <FlexBetween gap="0.25rem">
+            <MoreHorizOutlined sx={{ color: mediumMain }} />
+          </FlexBetween>
+        )}
+
+       <Button
+       disabled={!post}
+       onClick={handlePost}
+       sx={{
+        color: palette.background.alt,
+        backgroundColor: palette.primary.main,
+        borderRadius: '3rem'
+       }}
+       >
+        Post
+       </Button>
       </FlexBetween>
     </WidgetWrapper>
   );
