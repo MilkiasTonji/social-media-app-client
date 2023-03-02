@@ -63,12 +63,9 @@ const Form = () => {
   const register = async (values, onSubmitProps)=> {
     const formData = new FormData()
     // var obj = {}
-    // for (let value in values){
-    //   console.log(`${value}: ${values[value]}`)
-    //     obj = {
-    //       value: values[value]
-    //     }
-    // }
+    for (let value in values){
+      formData.append(value, values[value])
+    }
     formData.append("picturePath", values.picture.name);
     const savedUserResponse = await fetch(
         "http://localhost:3001/auth/register",
