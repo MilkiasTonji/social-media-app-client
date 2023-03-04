@@ -1,4 +1,7 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import Form from './Form'
 import FormTest from "./FormTest";
@@ -6,6 +9,18 @@ import FormTest from "./FormTest";
 const LoginPage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const theme = useTheme();
+  const navigate = useNavigate()
+
+//   const isAuth = Boolean(useSelector((state)=> state.token));
+//   console.log(isAuth)
+
+// useEffect(()=> {
+//   if(isAuth){
+//     navigate('/home')
+//   }
+
+// }, []) 
+//eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box>

@@ -20,6 +20,7 @@ const Friend = ({friendId, name, subtitle, userPictruePath}) => {
     const primaryLight = palette.primary.light
     const primaryDark  = palette.primary.dark
     const medium = palette.neutral.medium
+    const main = palette.primary.main
 
     const isFriend = friends.find((friend)=> friend._id === friendId)
 
