@@ -71,8 +71,7 @@ const Form = () => {
         "http://localhost:3001/auth/register",
         {
            method: "POST",
-           headers: {"Content-Type": "application/json"},
-           body: JSON.stringify(values),
+           body: formData,
         }
     );
     const savedUser = await savedUserResponse.json()
