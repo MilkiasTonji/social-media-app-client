@@ -1,7 +1,6 @@
 
 import { PersonAddOutlined, PersonRemoveOutlined } from '@mui/icons-material'
-import { IconButton, Typography } from '@mui/material'
-import { Box, useTheme } from '@mui/system'
+import { IconButton, Typography, useTheme, Box } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -16,6 +15,7 @@ const Friend = ({friendId, name, subtitle, userPictruePath}) => {
     const {_id} = useSelector((state)=> state.user)
     const token = useSelector((state)=> state.token)
     const friends = useSelector((state)=> state.user.friends)
+    const user = useSelector((state) => state.user)
     const {palette} = useTheme()
     const primaryLight = palette.primary.light
     const primaryDark  = palette.primary.dark
@@ -23,6 +23,9 @@ const Friend = ({friendId, name, subtitle, userPictruePath}) => {
     const main = palette.primary.main
 
     const isFriend = friends.find((friend)=> friend._id === friendId)
+
+    console.log(isFriend, friendId)
+    console.log(friends, user)
 
     const patchFriend = async ()=> {
         const response = await fetch(`http://localhost:3001/users/${_id}/${friendId}`, {
