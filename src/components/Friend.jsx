@@ -22,7 +22,7 @@ const Friend = ({friendId, name, subtitle, userPictruePath}) => {
     const medium = palette.neutral.medium
     const main = palette.primary.main
 
-    const isFriend = friends.find((friend)=> friend._id === friendId)
+    const isFriend = friends.length && friends.find((friend)=> friend._id === friendId)
 
     console.log(isFriend, friendId)
     console.log(friends, user)
