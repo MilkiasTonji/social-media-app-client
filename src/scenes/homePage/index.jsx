@@ -1,6 +1,7 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
 import Navbar from "scenes/navbar";
+import AdvertWidget from "scenes/widgets/AdvertWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import UserWidget from "scenes/widgets/UserWidget";
@@ -33,6 +34,7 @@ const HomePage = () => {
             isNonMobileScreens && (
                 <Box flexBasis="26%">
                     {/* SHOW FREINDS LIST ONLY ON DESKTOP */}
+                    <AdvertWidget />
                 </Box>
             )
         }

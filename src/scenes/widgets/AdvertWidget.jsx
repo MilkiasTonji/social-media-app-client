@@ -33,6 +33,10 @@ const AdvertWidget = () => {
                 <Typography color={main}>MikaCosmotics</Typography>
                 <Typography color={medium}>mikacosmotics.com</Typography>
             </FlexBetween>
+            <Typography color={medium} margin="0.5rem 0">
+                Your pathway to stunning and immaculate beauty and made sure 
+                your skin is exfoliating skin and shining like light.
+            </Typography>
         </WidgetWrapper>
     )
 }
