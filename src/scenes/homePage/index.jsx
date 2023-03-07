@@ -35,6 +35,7 @@ const HomePage = () => {
                 <Box flexBasis="26%">
                     {/* SHOW FREINDS LIST ONLY ON DESKTOP */}
                     <AdvertWidget />
+                    <Box m="2rem 0" />
                 </Box>
             )
         }
